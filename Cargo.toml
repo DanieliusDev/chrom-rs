@@ -1,0 +1,13 @@
+[package]
+name = "chrom"
+version = "1.0.0"
+authors = ["Danielius Vaisnoras"]
+edition = "2021"
+description = "A simple library for representing colours"
+repository = "https://github.com/gamertike/chrom-rs"
+license = "MIT"
+keywords = ["colour", "hex", "rgb"]
+categories = ["data-structures", "mathematics"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"], optional = true }
