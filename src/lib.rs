@@ -44,6 +44,8 @@ use std::{fmt, ops};
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 pub struct Colour(pub u32);
 
+pub type Color = Colour;
+
 impl Colour {
     pub const WHITE: Self = Self(0xffffff);
     pub const BLACK: Self = Self(0x000000);
