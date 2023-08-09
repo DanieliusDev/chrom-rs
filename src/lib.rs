@@ -3,7 +3,7 @@
 //! # Examples
 //!
 //! ```
-//! use colour::Colour;
+//! use chrom::Colour;
 //!
 //! // Make a new colour using a hex value
 //! let white = Colour(0xffffff);
@@ -26,7 +26,7 @@ use std::{fmt, ops};
 /// # Examples
 ///
 /// ```
-/// use colour::Colour;
+/// use chrom::Colour;
 ///
 /// // Make a new colour using a hex value
 /// let white = Colour(0xffffff);
