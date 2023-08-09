@@ -1,0 +1,15 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Test
+        run: cargo test
+      - name: Lint
+        run: cargo clippy
+      - name: Check for errors
+        run: cargo check
