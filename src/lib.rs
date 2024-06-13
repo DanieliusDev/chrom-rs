@@ -30,7 +30,7 @@ use std::{fmt, ops};
 ///
 /// // Make a new colour using a hex value
 /// let white = Colour(0xffffff);
-/// assert_eq!(*white, 16777215);
+/// assert_eq!(*white, 0xffffff);
 ///
 /// // Make a new colour using built-in constants
 /// let blue = Colour::BLUE;
@@ -89,6 +89,11 @@ impl Colour {
     pub const fn blue(self) -> u8 {
         (self.0 & 255) as u8
     }
+
+    /// Get the hexadecimal string of the colour
+    pub fn hex(self) -> String {
+        format!("#{:06x}", self.0)
+    }
 }
 
 impl ops::Add for Colour {
@@ -121,7 +126,7 @@ impl ops::DerefMut for Colour {
 
 impl fmt::Display for Colour {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "#{:x}", self.0)
+        write!(f, "#{}", self.hex())
     }
 }
 
