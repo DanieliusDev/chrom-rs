@@ -35,10 +35,6 @@ use std::{fmt, ops};
 /// // Make a new colour using built-in constants
 /// let blue = Colour::BLUE;
 /// assert_eq!((52, 152, 219), blue.into());
-///
-/// // Make a new colour using RGB values
-/// let yellow = Colour::from_rgb(254, 231, 92);
-/// assert_eq!(yellow, Colour::YELLOW);
 /// ```
 #[derive(Clone, Copy, Debug, Default, Eq, Ord, PartialEq, PartialOrd)]
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
@@ -71,28 +67,73 @@ impl Colour {
     pub const LIGHT_GREY: Self = Self(0xBCC0C0);
 
     /// Make a new colour using RGB values
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use chrom::Colour;
+    ///
+    /// let yellow = Colour::from_rgb(254, 231, 92);
+    /// assert_eq!(yellow, Colour::YELLOW);
+    /// ```
     pub const fn from_rgb(red: u8, green: u8, blue: u8) -> Self {
         Self((red as u32) << 16 | (green as u32) << 8 | blue as u32)
     }
 
     /// Get the red RGB component of the colour
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use chrom::Colour;
+    ///
+    /// let red = Colour(0xff0000);
+    /// assert_eq!(255, red.red());
+    /// ```
     pub const fn red(self) -> u8 {
         ((self.0 >> 16) & 255) as u8
     }
 
     /// Get the green RGB component of the colour
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use chrom::Colour;
+    ///
+    /// let green = Colour(0x00ff00);
+    /// assert_eq!(255, green.green());
+    /// ```
     pub const fn green(self) -> u8 {
         ((self.0 >> 8) & 255) as u8
     }
 
     /// Get the blue RGB component of the colour
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use chrom::Colour;
+    ///
+    /// let blue = Colour(0x0000ff);
+    /// assert_eq!(255, blue.blue());
+    /// ```
     pub const fn blue(self) -> u8 {
         (self.0 & 255) as u8
     }
 
     /// Get the hexadecimal string of the colour
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use chrom::Colour;
+    ///
+    /// let red = Colour(0xff0000);
+    /// assert_eq!("ff0000", red.hex());
+    /// ```
     pub fn hex(self) -> String {
-        format!("#{:06x}", self.0)
+        format!("{:06x}", self.0)
     }
 }
 
