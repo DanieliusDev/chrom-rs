@@ -1,14 +1,17 @@
 name: Release
 on:
   release:
-    types: published
+    types: [published]
+
 jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+
       - name: Publish to Crates.io
         run: cargo publish
         env:

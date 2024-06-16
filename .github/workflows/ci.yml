@@ -1,15 +1,23 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    branches: [main]
+
 jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+
       - name: Test
         run: cargo test
+
       - name: Lint
         run: cargo clippy
+
       - name: Check for errors
         run: cargo check
